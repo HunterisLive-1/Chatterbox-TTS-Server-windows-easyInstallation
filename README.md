@@ -1,138 +1,114 @@
-# 🌍 Multilingual Chatterbox TTS Server (Windows Edition)
+# Chatterbox TTS Server — Windows Edition
 
-Enhanced [Chatterbox TTS](https://github.com/resemble-ai/chatterbox) server with **multilingual support** and **easy Windows installation**. Generate high-quality speech in 24+ languages with voice cloning capabilities.
+**Maintainer:** [HunterIsLive](https://github.com/HunterisLive-1)
 
-## 📺 Video Tutorials
+Self-hosted text-to-speech server built on [**Chatterbox**](https://github.com/resemble-ai/chatterbox) by [Resemble AI](https://www.resemble.ai/). This edition adds **multilingual synthesis**, a **browser UI**, **voice cloning**, **chunked / audiobook-scale generation**, and **streamlined Windows setup** (NVIDIA CUDA, AMD ROCm, or CPU).
 
-- **Setup Guide:** [**How to in 1 minute - YouTube**](https://www.youtube.com/@Howto_in_1_minute)
-- **Full Tutorial:** [Complete Walkthrough](https://www.youtube.com/@Howto_in_1_minute)
+**Repository:** [github.com/HunterisLive-1/Chatterbox-TTS-Server-windows-easyInstallation](https://github.com/HunterisLive-1/Chatterbox-TTS-Server-windows-easyInstallation)
 
-## ✨ Key Features
+---
 
-🌐 **24+ Languages:** Arabic, Chinese, Danish, Dutch, English, Finnish, French, German, Greek, Hebrew, Hindi, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese, Russian, Spanish, Swedish, Swahili, Turkish
+## Highlights
 
-🎤 **Voice Cloning:** Clone any voice using reference audio files
+- **24+ languages** — Arabic, Chinese, Danish, Dutch, English, Finnish, French, German, Greek, Hebrew, Hindi, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese, Russian, Spanish, Swedish, Swahili, Turkish, and more  
+- **Voice cloning** — reference audio via Web UI (`./reference_audio`)  
+- **Predefined voices** — drop `.wav` / `.mp3` in `./voices`  
+- **Long-form text** — optional splitting with configurable chunk size  
+- **Windows-friendly** — guided install (`easy-installation` / `install.bat` flow as documented in-repo)  
+- **Acceleration** — NVIDIA (CUDA), AMD (ROCm), or CPU  
+- **APIs** — FastAPI with `/docs`; includes an **OpenAI-compatible** speech endpoint  
 
-📚 **Audiobook Generation:** Process entire books with automatic text chunking
+---
 
-🚀 **Easy Windows Installation:** One-click setup with `install.bat`
+## Requirements
 
-⚡ **GPU Acceleration:** NVIDIA (CUDA) and AMD (ROCm) support
+- **OS:** Windows 10/11 (64-bit) or Linux  
+- **Python:** 3.10+  
+- **RAM:** 4 GB+ (8 GB+ recommended)  
+- **Disk:** ~5 GB+ for models  
+- **GPU (optional):** NVIDIA with 4 GB+ VRAM, or supported AMD (e.g. RX 6000/7000 series)  
 
-🌐 **Modern Web UI:** Intuitive interface with real-time audio playback
+---
 
-📡 **FastAPI Server:** RESTful API with interactive documentation
+## Quick start (Windows)
 
-## 🖥️ Platform Support
+1. **Clone this repository**
 
-- **Windows:** Full support with easy installation script
-- **Linux:** Manual installation supported  
-- **macOS:** Use the [main repository](https://github.com/devnen/Chatterbox-TTS-Server)
-
-## 🔩 System Requirements
-
-- **Windows 10/11** (64-bit) or **Linux**
-- **Python 3.10+**
-- **4GB+ RAM** (8GB+ recommended)
-- **5GB+ storage** for models
-- **GPU (Optional):** NVIDIA with 4GB+ VRAM or AMD RX 6000/7000 series
-
-## 🚀 Quick Installation (Windows)
-
-1. **Download**
    ```bash
-   git clone https://github.com/mirbehnam/Chatterbox-TTS-Server-windows-easyInstallation.git
-   cd Chatterbox-TTS-Server
+   git clone https://github.com/HunterisLive-1/Chatterbox-TTS-Server-windows-easyInstallation.git
+   cd Chatterbox-TTS-Server-windows-easyInstallation
    ```
 
-2. **Install**
-   - Double-click `install.bat`
-   - Choose your hardware:
-     - Option 1: NVIDIA GPU (CUDA)
-     - Option 2: CPU Only
-     - Option 3: AMD GPU (ROCm)
+2. **Install** — double-click **`setup.bat`** (runs `easy-installation/run-setup.ps1`) and follow the prompts for **NVIDIA**, **CPU**, or **AMD (ROCm)**.
 
-3. **Run**
-   - Double-click `win-run.bat`
+3. **Run** — `win-run.bat` (from repo root, as shipped).
 
-4. **Access**
-   - Open `http://localhost:8004` in your browser
+4. **Open** — [http://localhost:8004](http://localhost:8004)  
+   API reference: [http://localhost:8004/docs](http://localhost:8004/docs)
 
-## 💻 Manual Installation (Linux/Other)
+---
 
-1. **Clone Repository**
+## Manual install (Linux / advanced)
+
+1. **Clone**
+
    ```bash
-   git clone https://github.com/mirbehnam/Chatterbox-TTS-Server-windows-easyInstallation.git
-   cd Chatterbox-TTS-Server
+   git clone https://github.com/HunterisLive-1/Chatterbox-TTS-Server-windows-easyInstallation.git
+   cd Chatterbox-TTS-Server-windows-easyInstallation
    ```
 
-2. **Setup Environment**
-   > **Note:** Make sure you're using Python 3.10 for compatibility
+2. **Virtual environment** (Python 3.10 recommended)
+
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    pip install --upgrade pip
    ```
 
-3. **Install Dependencies**
-   
-   Choose based on hardware:
+3. **Dependencies** (pick one)
+
    ```bash
-   # NVIDIA GPU
-   pip install -r requirements-nvidia.txt
-   
-   # AMD GPU  
-   pip install -r requirements-rocm.txt
-   
-   # CPU Only
-   pip install -r requirements.txt
+   pip install -r requirements-nvidia.txt   # NVIDIA
+   pip install -r requirements-rocm.txt    # AMD ROCm
+   pip install -r requirements.txt          # CPU
    ```
 
-4. **Run Server**
+4. **Start**
+
    ```bash
-   source venv/bin/activate  # if not already activated
+   source venv/bin/activate
    python server.py
    ```
 
-## ▶️ Running the Application
+---
 
-**Windows:** Double-click `win-run.bat`
+## Usage
 
-**Linux/Manual:** 
-```bash
-source venv/bin/activate
-python server.py
-```
+### Web UI
 
-**Access:** Open `http://localhost:8004`
+1. Enter text and choose **language**  
+2. Select **predefined** or **clone** voice mode  
+3. Tune generation options as needed  
+4. Generate and play / download audio  
 
-**API Docs:** Visit `http://localhost:8004/docs`
+### API examples
 
-## 🎯 Usage
+**TTS (illustrative JSON body):**
 
-### Web Interface
-1. Enter text in any supported language
-2. Select target language from dropdown
-3. Choose voice mode (predefined or clone)
-4. Adjust generation settings
-5. Generate and listen to speech
-
-### API Examples
-
-**Main TTS Endpoint:**
-```bash
+```json
 POST /tts
 {
   "text": "Hello world!",
-  "language": "en", 
+  "language": "en",
   "voice_mode": "predefined",
   "temperature": 0.7,
   "speed_factor": 1.0
 }
 ```
 
-**OpenAI Compatible:**
-```bash
+**OpenAI-compatible speech:**
+
+```json
 POST /v1/audio/speech
 {
   "input": "Your text here",
@@ -142,15 +118,12 @@ POST /v1/audio/speech
 }
 ```
 
-## 🎤 Voice Management
+---
 
-**Predefined Voices:** Place `.wav`/`.mp3` files in `./voices` directory
+## Configuration
 
-**Voice Cloning:** Upload reference audio via Web UI (stored in `./reference_audio`)
+Edit `config.yaml` (defaults shown conceptually):
 
-## ⚙️ Configuration
-
-Edit `config.yaml` for settings:
 ```yaml
 server:
   host: "0.0.0.0"
@@ -158,43 +131,40 @@ server:
 
 tts_engine:
   device: "auto"  # auto, cuda, cpu
-  
+
 generation_defaults:
   temperature: 0.7
   language: "en"
 ```
 
+---
 
+## Troubleshooting
 
-## 🔍 Troubleshooting
+- **GPU not visible** — install vendor drivers; restart; confirm `device` in config.  
+- **Import / dependency errors** — activate the same venv you used to install requirements.  
+- **Port in use** — change `server.port` in `config.yaml`.  
 
-For comprehensive troubleshooting, visit the [main repository](https://github.com/devnen/Chatterbox-TTS-Server).
-
-**Common Issues:**
-- GPU not detected: Verify drivers and restart
-- Import errors: Ensure virtual environment is activated  
-- Port conflicts: Change port in `config.yaml`
-
-## 🤝 Contributing
-
-Contributions welcome! Report bugs, suggest features, or submit pull requests.
-
-## 📜 License
-
-MIT License
-
-## 🙏 Acknowledgements
-
-- [Resemble AI](https://www.resemble.ai/) for [Chatterbox TTS](https://github.com/resemble-ai/chatterbox)
-- [devnen](https://github.com/devnen) for the original [server implementation](https://github.com/devnen/Chatterbox-TTS-Server)
-
-## 📞 Support
-
-- **General Issues:** [Main repository](https://github.com/devnen/Chatterbox-TTS-Server)
-- **Windows Issues:** Open issue in this repository
-- **macOS Users:** Use [main repository](https://github.com/devnen/Chatterbox-TTS-Server)
-- **Video Tutorials:** [**How to in 1 minute - YouTube**](https://www.youtube.com/@Howto_in_1_minute)
+For bugs or feature requests, use **Issues** on [this repository](https://github.com/HunterisLive-1/Chatterbox-TTS-Server-windows-easyInstallation).
 
 ---
 
-*Generate speech in 24+ languages with one-click Windows installation!*
+## Contributing
+
+Pull requests and issues are welcome. Please keep changes focused and test on your target platform (Windows / Linux, CPU or GPU) when possible.
+
+---
+
+## License
+
+MIT License — see `LICENSE` in the repository.
+
+---
+
+## Acknowledgements
+
+- **[Resemble AI](https://www.resemble.ai/)** — [**Chatterbox TTS**](https://github.com/resemble-ai/chatterbox) model and ecosystem  
+
+---
+
+*Self-host Chatterbox-powered speech with a clean UI and flexible APIs.*
